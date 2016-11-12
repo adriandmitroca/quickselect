@@ -23,18 +23,17 @@ class Partition
     /**
      * @param int      $left
      * @param int|null $right
-     * @param int|null $pivot
      *
      * @return array
      */
-    public function partition(int $left = 0, int $right = null, int $pivot = null) : array
+    public function partition(int $left, int $right) : array
     {
-        $this->pivotIndex = $pivot === null ? $left : $pivot;
+        $this->pivotIndex = $left;
         $this->pivotValue = $this->numbers[$this->pivotIndex];
 
         $this->swap($this->pivotIndex, $left);
 
-        $this->right = ($right === null) ? count($this->numbers) - 1 : $right;
+        $this->right = $right;
         $this->left  = $left;
 
         while ($this->left < $this->right) {
